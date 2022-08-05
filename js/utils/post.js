@@ -12,7 +12,10 @@ function createElement(post) {
 
   if (!liElement) return;
   // thumbnail, title , description, author,day update
-
+  const divElement = liElement.firstElementChild;
+  divElement.addEventListener('click', () => {
+    window.location.assign(`/post-detail.html?id=${post.id}`);
+  });
   setTextContent(liElement, '[data-id="title"]', truncateText(post.title, 80));
   setTextContent(liElement, '[data-id="description"]', truncateText(post.description));
   setTextContent(liElement, '[data-id="author"]', truncateText(post.author));

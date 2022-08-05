@@ -42,5 +42,6 @@ async function handleFilterChange(filterName, filterValue) {
     renderPagination('pagination', pagination);
   } catch (error) {
     console.log(error);
+    
   }
 })();
