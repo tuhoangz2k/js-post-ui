@@ -38,7 +38,9 @@ a > i {
 a:hover > i {
   transform: rotate(90deg);
 }
-
+a:hover > i.fas.fa-edit {
+  transform: rotate(0);
+}
 /* Add underline for all h1 */
 h1.with-underline {
   position: relative;
