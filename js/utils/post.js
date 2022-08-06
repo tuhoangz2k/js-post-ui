@@ -13,7 +13,12 @@ function createElement(post) {
   if (!liElement) return;
   // thumbnail, title , description, author,day update
   const divElement = liElement.firstElementChild;
-  divElement.addEventListener('click', () => {
+  divElement.addEventListener('click', (e) => {
+    // if event is triggered from menu -->ignore
+    const menu = liElement.querySelector('[data-id="menu"]');
+    if (menu && menu.contains(e.target)) {
+      return;
+    }
     window.location.assign(`/post-detail.html?id=${post.id}`);
   });
   setTextContent(liElement, '[data-id="title"]', truncateText(post.title, 80));
@@ -30,6 +35,13 @@ function createElement(post) {
     });
   }
 
+  const editBtn = liElement.querySelector('[data-id="edit"]');
+  if (!editBtn) return;
+  editBtn.addEventListener('click', (e) => {
+    // e.stopPropagation();
+    window.location.assign(`/add-edit-post.html?id=${post.id}`);
+    console.log('child');
+  });
   // attach
 
   return liElement;

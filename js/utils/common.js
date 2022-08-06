@@ -6,6 +6,11 @@ export function setTextContent(parents, selector, text) {
   return element;
 }
 
+export function setValueInput(form, selector, value) {
+  const field = form.querySelector(selector);
+  field.value = value;
+}
+
 export function truncateText(text, MaxLength) {
   if (text.length < MaxLength) return text;
 
