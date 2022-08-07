@@ -72,7 +72,7 @@
               </p>
             </div>
 
-            <form id="postForm" class="post-form">
+            <form id="postForm" class="post-form" novalidate>
               <div class="form-group mb-3">
                 <label for="postTitle">Title</label>
                 <input
@@ -88,12 +88,7 @@
 
               <div class="form-group mb-3">
                 <label for="postAuthor">Author</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="author"
-                  placeholder="Eg: Paul Nguyen"
-                />
+                <input type="text" class="form-control" name="author" placeholder="Eg: Tu Hoang" />
                 <div class="invalid-feedback">Please enter author of this post!</div>
               </div>
 
@@ -102,7 +97,34 @@
                 <textarea class="form-control" name="description" rows="3"></textarea>
               </div>
 
-              <div class="form-group mb-3">
+              <div class="mb-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="ImageSource"
+                    id="ImageSourcePicsum"
+                    checked
+                    value="picsum"
+                  />
+                  <label class="form-check-label" for="ImageSourcePicsum">
+                    random image suing picsum
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="ImageSource"
+                    id="ImageSourceUpLoad"
+                    value="upload"
+                  />
+                  <label class="form-check-label" for="ImageSourceUpLoad">
+                    upload image from your computer</label
+                  >
+                </div>
+              </div>
+              <div class="form-group mb-3" data-image-source="picsum">
                 <label for="postChangeImage">Image</label>
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   We&apos;re using
@@ -111,10 +133,18 @@
                 <button type="button" id="postChangeImage" class="btn btn-dark">
                   Change post image
                 </button>
+                <input type="text" class="d-none" name="imageUrl" />
+                <div class="invalid-feedback"></div>
               </div>
-              <input type="hidden" class="form-control" name="imageUrl" />
+
+              <div class="input-group mb-3" hidden data-image-source="upload">
+                <input type="file" class="form-control" id="uploadImage" />
+                <label class="input-group-text" for="uploadImage">Upload</label>
+              </div>
               <div class="text-center">
-                <button class="btn btn-primary"><i class="fas fa-save mr-1"></i> Save</button>
+                <button name="submit" class="btn btn-primary">
+                  <i class="fas fa-save mr-1"></i> Save
+                </button>
               </div>
             </form>
           </div>
