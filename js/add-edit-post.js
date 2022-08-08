@@ -3,12 +3,24 @@ import { initPostForm, toast } from './utils';
 
 async function handleFormSubmit(formValue) {
   try {
-    const savedPost = formValue.id ? await postApi.update(formValue) : await postApi.add(formValue);
+    const formData = jsonToFormData(formValue);
+    const savedPost = formValue.id
+      ? await postApi.formUpdate(formValue)
+      : await postApi.formAdd(formValue);
     toast.success('success');
     setTimeout(() => {
       window.location.assign(`/post-detail.html?id=${savedPost.id}`);
     }, 2000);
   } catch (error) {}
+}
+
+function jsonToFormData(json) {
+  const formData = new FormData();
+  for (const key in json) {
+    formData.set(key, json[key]);
+  }
+
+  return formData;
 }
 
 (async () => {

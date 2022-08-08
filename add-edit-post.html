@@ -133,12 +133,19 @@
                 <button type="button" id="postChangeImage" class="btn btn-dark">
                   Change post image
                 </button>
-                <input type="text" class="d-none" name="imageUrl" />
+                <input type="text" name="imageUrl" class="d-none" />
                 <div class="invalid-feedback"></div>
               </div>
 
               <div class="input-group mb-3" hidden data-image-source="upload">
-                <input type="file" class="form-control" id="uploadImage" />
+                <input
+                  name="image"
+                  type="file"
+                  class="form-control"
+                  id="uploadImage"
+                  accept="image/*"
+                />
+                <div class="invalid-feedback"></div>
                 <label class="input-group-text" for="uploadImage">Upload</label>
               </div>
               <div class="text-center">

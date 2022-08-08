@@ -42,6 +42,17 @@ function createElement(post) {
     window.location.assign(`/add-edit-post.html?id=${post.id}`);
     console.log('child');
   });
+
+  const removeBtn = liElement.querySelector('[data-id="remove"]');
+  if (removeBtn) {
+    removeBtn.addEventListener('click', () => {
+      const customEvent = new CustomEvent('post-delete', {
+        bubbles: true,
+        detail: post,
+      });
+      removeBtn.dispatchEvent(customEvent);
+    });
+  }
   // attach
 
   return liElement;
